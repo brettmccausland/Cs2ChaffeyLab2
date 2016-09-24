@@ -30,8 +30,8 @@ void  CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vect
 void DisplayFrequencyChart(const vector<char>& characters,const vector<int>& CharsWordsLinesCount);// not yet writen
 void InitializeAlphabetAndLineAndSpace(vector<char>& characters);  // not yet written
 
-void Exercise_R9_1();
-void Exercise_R9_2();
+void Exercise_R9_1();brett done
+void Exercise_R9_2();brett done
 void Exercise_R9_3();
 void Exercise_R9_4();
 void Exercise_R9_5();
