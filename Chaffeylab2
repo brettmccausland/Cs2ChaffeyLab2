@@ -6,7 +6,6 @@
 
 /*
     Brett mccausland
-    Andre Darville
     Lab 2 Streams
     Last Updated by: Brett mccausland
     Last updated : 09-23-16
@@ -30,25 +29,25 @@ void  CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vect
 void DisplayFrequencyChart(const vector<char>& characters,const vector<int>& CharsWordsLinesCount);// not yet writen
 void InitializeAlphabetAndLineAndSpace(vector<char>& characters);  // not yet written
 
-void Exercise_R9_1();
-void Exercise_R9_2();
-void Exercise_R9_3();
-void Exercise_R9_4();
-void Exercise_R9_5();
-void Exercise_R9_6();
-void Exercise_R9_7();
-void Exercise_R9_8();
-void Exercise_R9_9();
-//void Exercise_R9_10();
-void Exercise_R9_11();
-void Exercise_R9_12();
+void Exercise_R9_1();// brett done
+void Exercise_R9_2();// brett done
+void Exercise_R9_3();// elizabeth
+void Exercise_R9_4();//andre
+void Exercise_R9_5();// rex
+void Exercise_R9_6();//brett
+void Exercise_R9_7();//elizabeth
+void Exercise_R9_8();//andre
+void Exercise_R9_9();// rex
+void Exercise_R9_10();//brett
+void Exercise_R9_11();//andre
+void Exercise_R9_12();//brett done
 //----------------------------------
-void Exercise_P9_1();
-void Exercise_P9_3();
-void Exercise_P9_6();
-void Exercise_P9_7();
-void Exercise_P9_8();
-void Exercise_P9_13();
+void Exercise_P9_1();// brett( in progress)
+void Exercise_P9_3();// brett( in progress)
+void Exercise_P9_6();// elizabeth
+void Exercise_P9_7();//andre
+void Exercise_P9_8(); // rex
+void Exercise_P9_13();// brett
 
 
 int main()
