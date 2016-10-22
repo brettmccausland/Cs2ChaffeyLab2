@@ -25,7 +25,7 @@ template<typename Item_type>
 void loadFromUserDeclaredFile(vector<Item_type>& data);
 
 void Print (const vector<string>& data);
-void  CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vector<int>& CharsWordsLinesCount); // not yet written
+void CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vector<int>& CharsWordsLinesCount); // not yet written
 void DisplayFrequencyChart(const vector<char>& characters,const vector<int>& CharsWordsLinesCount);// not yet writen
 void InitializeAlphabetAndLineAndSpace(vector<char>& characters);  // not yet written
 
@@ -75,23 +75,29 @@ int main()
     //Exercise_P9_13();
     return 0;
 }
-void Exercise_R9_2()
+void Exercise_R9_2()//brett done
 {
-    // Question: When do you open a file as an ifstream, as an ofstream, or as an fstream? Could you simply open all files as an fstream?
-    // Anwser: You open a file with ifstream when your going to read from it with.You open a file with ofstream when you are going to write to it.
-    // You could accomplish both with fstream however it is in best practice to use the specialized streams for the specific task
+    // Question: When do you open a file as an ifstream, as an ofstream,
+    // or as an fstream? Could you simply open all files as an fstream?
+    // Anwser: You open a file with ifstream when your going to read from it
+    // with.You open a file with ofstream when you are going to write to it.
+    // You could accomplish both with fstream however it is in best practice
+    // to use the specialized streams for the specific task
 }
-void Exercise_R9_1()
+void Exercise_R9_1()// brett done
 {
-    //Write C++ code to open a file with the name Hello.txt, store the message “Hello, World!” in the file, and close the file.
-    //Then open the same file again and read the message into a string variable. Close the file again.
+    //Write C++ code to open a file with the name Hello.txt,
+    //store the message “Hello, World!” in the file, and close the file.
+    //Then open the same file again and read the message into a string variable.
+    //Close the file again.
+
     ofstream myfile;
     ifstream infile;
     string s;
     string filename;
     filename="Hello.txt";
     vector<string> dataout;
-     vector<string> dataIn;
+    vector<string> dataIn;
     dataout.push_back("Hello");
     dataout.push_back("World");
 
@@ -100,10 +106,6 @@ void Exercise_R9_1()
     Print(dataIn);
     cout<<endl;
 }
-//   Exercise_R9_1()comand prompt
-//
-//      Hello World
-//
 void Print(const vector<string>& data)
 {
     for(size_t i=0;i<data.size();i++)
@@ -221,8 +223,11 @@ void Exercise_R9_12()
 //----------------------------Programming Exercises----------------------------
 void Exercise_P9_1()
 {
-    // Write a program that asks the user for a file name and displays the number of characters, words, and lines in that file.
-    //Then have the program ask for the name of the next file. When the user enters a file that doesn’t exist (such as the empty string), the program should exit.
+    // Write a program that asks the user for a file name and displays the number of
+    // characters, words, and lines in that file.
+    //Then have the program ask for the name of the next file.
+    //When the user enters a file that doesn’t exist (such as the empty string),
+    //the program should exit.
     vector<int> CharsWordsLinesCount ;
     vector<char> characters;
     vector<char>Data;
