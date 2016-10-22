@@ -53,8 +53,8 @@ void Exercise_P9_13();// brett
 int main()
 {
     system("clear");
-
-    Exercise_R9_1(); // Brett (done)
+    cout<< "lab 2 "<<endl;
+    //Exercise_R9_1(); // Brett (done)
     //Exercise_R9_2(); //Brett (done)
     //Exercise_R9_3();
     //Exercise_R9_4();
