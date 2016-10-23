@@ -41,7 +41,7 @@ void Exercise_R9_10();//brett
 void Exercise_R9_11();//andre
 void Exercise_R9_12();//brett done
 //----------------------------------
-void Exercise_P9_1();// brett( in progress)
+void Exercise_P9_1();// brett( done)
 void Processfile(string name,bool& run);
 void Exercise_P9_3();// brett(done)
 void Exercise_P9_6();// elizabeth
@@ -221,7 +221,7 @@ void Exercise_R9_12()// brett done
   // Anwser: sequntial access, accesses data by reading through the entire file, random access goes directly to a specific location
 }
 //----------------------------Programming Exercises----------------------------
-void Exercise_P9_1()
+void Exercise_P9_1()//  Brett(done)
 {
      //Write a program that asks the user for a file name and displays the number of characters,
      //words, and lines in that file. Then have the program ask for the name of the next file.
@@ -287,5 +287,24 @@ void Exercise_P9_8()
 }
 void Exercise_P9_13()
 {
+    //Write a program that prints out a student grade report.There is a file, classes.txt,
+    //that contains the names of all classes taught at a college, such as
+   //classes.txt
+   //1 CSC1
+   //2 CSC2
+   //3 CSC46 4 CSC151 5 MTH121 6 ...
+   //For each class, there is a file with student numbers and grades:
+    //csc2.txt
+    //1 11234 A-
+    //2 12547 B
+    //3 16753 B+
+    //4 21886 C 5 ...
+   //Write a program that asks for a student ID and prints out a grade report for that student,
+   //by searching all class files. Here is a sample report
 
+    // Student ID 16753
+   //CSC2 B+
+   //MTH121 C+
+   //CHN1 A
+   //PHY50 A-
 }
