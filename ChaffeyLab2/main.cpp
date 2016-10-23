@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include<vector>
+#include"fprocess.h"
 //#include <iomnip>
 
 /*
@@ -25,9 +26,7 @@ template<typename Item_type>
 void loadFromUserDeclaredFile(vector<Item_type>& data);
 
 void Print (const vector<string>& data);
-void CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vector<int>& CharsWordsLinesCount); // not yet written
-void DisplayFrequencyChart(const vector<char>& characters,const vector<int>& CharsWordsLinesCount);// not yet writen
-void InitializeAlphabetAndLineAndSpace(vector<char>& characters);  // not yet written
+void InitializeVector(vector<int>& Fillwithzeros,int size);
 
 void Exercise_R9_1();// brett done
 void Exercise_R9_2();// brett done
@@ -43,7 +42,7 @@ void Exercise_R9_11();//andre
 void Exercise_R9_12();//brett done
 //----------------------------------
 void Exercise_P9_1();// brett( in progress)
-void Exercise_P9_3();// brett( in progress)
+void Exercise_P9_3();// brett(done)
 void Exercise_P9_6();// elizabeth
 void Exercise_P9_7();//andre
 void Exercise_P9_8(); // rex
@@ -54,7 +53,7 @@ int main()
 {
     system("clear");
     cout<< "lab 2 "<<endl;
-    //Exercise_R9_1(); // Brett (done)
+    Exercise_R9_1(); // Brett (done)
     //Exercise_R9_2(); //Brett (done)
     //Exercise_R9_3();
     //Exercise_R9_4();
@@ -67,7 +66,7 @@ int main()
     //Exercise_R9_11();
     //Exercise_R9_12();
     //----------------------------------
-    //Exercise_P9_1();
+    Exercise_P9_1();
      //Exercise_P9_3();
      //Exercise_P9_6();
     //Exercise_P9_7();
@@ -215,7 +214,7 @@ void Exercise_R9_11()
     //How can you break the Caesar cipher? That is, how can you read a letter that was encrypted with the Caesar cipher, even though you don’t know the key?
 }
 
-void Exercise_R9_12()
+void Exercise_R9_12()// brett done
 {
    //Question: What is the difference between sequential access and random access?
   // Anwser: sequntial access, accesses data by reading through the entire file, random access goes directly to a specific location
@@ -223,38 +222,29 @@ void Exercise_R9_12()
 //----------------------------Programming Exercises----------------------------
 void Exercise_P9_1()
 {
-    // Write a program that asks the user for a file name and displays the number of
-    // characters, words, and lines in that file.
-    //Then have the program ask for the name of the next file.
-    //When the user enters a file that doesn’t exist (such as the empty string),
-    //the program should exit.
-    vector<int> CharsWordsLinesCount ;
-    vector<char> characters;
-    vector<char>Data;
-    InitializeAlphabetAndLineAndSpace(characters);
-    loadFromUserDeclaredFile(Data);
-    CountCharacterOccurance(Data,characters,CharsWordsLinesCount);
-    DisplayFrequencyChart(characters,CharsWordsLinesCount);
+  char string[] = "Hello.txt";
+  char* filename = string;
+  Fprocess myfile(filename);
+  myfile.printFrequency();
+
+
 
 }
-void InitializeAlphabetAndLineAndSpace(vector<char>& characters)
+void InitializeVector(vector<int>& Fillwithzeros,int size)
 {
-
+    for(int i = 0 ;i<size;i++)
+        Fillwithzeros.push_back(0);
 }
-void DisplayFrequencyChart(const vector<char>& characters,const vector<int>& CharsWordsLinesCount)
-{
-
-}
-
-void  CountCharacterOccurance(vector<char>& Data, vector<char>& characters, vector<int>& CharsWordsLinesCount)
-{
-
-}
-void Exercise_P9_3()
+//precondition: file Hello.txt exist and contains text
+//uses class Fprocess
+void Exercise_P9_3()//done Brett
 {
     // Write a program that reads an input file and displays the letter frequencies in that file. Such a tool will help a code breaker.
     // If the most frequent letters in an encrypted file are H and K, then there is an excellent chance that they are the encryptions of E and T.
-
+    char string[] = "Hello.txt";
+    char* filename = string;
+    Fprocess myfile(filename);
+    myfile.printFrequency();
 }
 void Exercise_P9_6()
 {
