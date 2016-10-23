@@ -1,20 +1,36 @@
 #include "fprocess.h"
 
-Fprocess::Fprocess(char* fname)
+
+Fprocess::Fprocess(string fname)
 {
-    //cout<<"Fprocess constructor"<<endl;
-    instream.open(fname);
-    if(instream.fail())
-    {
-        cout<<"falied to open"<<endl;
-        exit(0);
-    }
-    else
-    {
+        //cout<<"Fprocess constructor"<<endl;
         _more=true;
         InitializeVector(95);
-        Process();
-       }
+        Myfname=fname;
+        word_count=0;
+        line_count=0;
+}
+void Fprocess::ProcessWordsLines()
+{
+   // cout<<"FillBlock()"<<endl;
+    stringstream temp;
+    string input;
+    string word;
+    instream.open(Myfname.c_str());
+    while(getline(instream, input))
+      {
+        cout<<"while(getline(instream, input))"<<endl;
+        //getline(instream, input);
+        stringstream ss(input);
+         ++line_count;
+         while(ss>>word)
+         {
+             cout<<"while(ss>>word)"<<endl;
+            ++ word_count;
+         }
+         if(instream.eof())
+             _more=false;
+        }
 }
 void Fprocess::FillBlock()
 {
@@ -30,31 +46,33 @@ void Fprocess::FillBlock()
     if(instream.eof())
         _more=false;
 }
-void Fprocess::Process()
+void Fprocess::ProcessCharacters()
 {
     //cout<<"Process()"<<endl;
+     instream.open(Myfname.c_str());
     int ASCII,n;
-
-    while(_more)
+    if(instream.fail())
     {
-        FillBlock();
-         n=Block.size();
-        for(int i=0;i<n;i++)
-        {
-            //cout<<"(int i=0;i<n;i++)"<<endl;
-            ASCII=(int)Block[i];
-            //cout<<ASCII;
-            if(ASCII>=32)
-            {
-               // cout<<"if(ASCII>=32)"<<endl;
-                ChOccurance[Index(ASCII)]=ChOccurance[Index(ASCII)] + 1;//probably not going to work
-            }
-        }
-        Block.clear();
-
+        cout<<"falied to open"<<endl;
+        exit(0);
     }
+    else
+    {
+        while(_more)
+        {
+            FillBlock();
+            n=Block.size();
+            for(int i=0;i<n;i++)
+            {
+                ASCII=(int)Block[i];
+                if(ASCII>=32)
+                    ChOccurance[Index(ASCII)]=ChOccurance[Index(ASCII)] + 1;//probably not going to work
+            }
+            Block.clear();
+         }
+    }
+    instream.close();
 }
-
 void Fprocess::InitializeVector(int size)
 {
     for(int i = 0 ;i<size;i++)
@@ -65,6 +83,16 @@ Fprocess::~Fprocess()
     Block.clear();
     ChOccurance.clear();
 }
+int Fprocess::Get_WordCount()
+{
+    return word_count;
+}
+
+int Fprocess::Get_LineCount()
+{
+    return line_count;
+}
+
 void Fprocess:: printFrequency()
  {
         int n=ChOccurance.size();

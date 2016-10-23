@@ -53,9 +53,9 @@ int main()
 {
     system("clear");
     cout<< "lab 2 "<<endl;
-    Exercise_R9_1(); // Brett (done)
+    //Exercise_R9_1(); // Brett (done)
     //Exercise_R9_2(); //Brett (done)
-    //Exercise_R9_3();
+    Exercise_R9_3();
     //Exercise_R9_4();
     //Exercise_R9_5();
     //Exercise_R9_6();
@@ -222,10 +222,31 @@ void Exercise_R9_12()// brett done
 //----------------------------Programming Exercises----------------------------
 void Exercise_P9_1()
 {
-  char string[] = "Hello.txt";
-  char* filename = string;
-  Fprocess myfile(filename);
-  myfile.printFrequency();
+     //Write a program that asks the user for a file name and displays the number of characters,
+     //words, and lines in that file. Then have the program ask for the name of the next file.
+     //When the user enters a file that doesn’t exist (such as the empty string), the program should exit.
+    string name;
+    string quit;
+    int lines,words;
+
+    bool run=true;
+    while(run)
+    {
+        cout<<"Enter the filename"<<endl;
+        cin>>name;
+        Fprocess myfile(name);
+        myfile.ProcessWordsLines();
+        lines=myfile.Get_WordCount();
+        words=myfile.Get_LineCount();
+        myfile.ProcessCharacters();
+        cout<<"lines: "<<lines<<endl;
+        cout<<"words: "<<words<<endl;
+        cout<<"Enter yes to quit"<<endl;
+        cin>>name;
+        if(quit=="yes")
+            run=false;
+
+    }
 
 
 
@@ -240,10 +261,11 @@ void InitializeVector(vector<int>& Fillwithzeros,int size)
 void Exercise_P9_3()//done Brett
 {
     // Write a program that reads an input file and displays the letter frequencies in that file. Such a tool will help a code breaker.
-    // If the most frequent letters in an encrypted file are H and K, then there is an excellent chance that they are the encryptions of E and T.
-    char string[] = "Hello.txt";
-    char* filename = string;
+    // If the most frequent letters in an encrypted file are H and K,
+    // then there is an excellent chance that they are the encryptions of E and T.
+    string filename = "Hello.txt";
     Fprocess myfile(filename);
+    myfile.ProcessCharacters();
     myfile.printFrequency();
 }
 void Exercise_P9_6()
