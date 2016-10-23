@@ -91,7 +91,7 @@ Fprocess::~Fprocess()
 {
     Block.clear();
     ChOccurance.clear();
-}
+ }
 int Fprocess::Get_WordCount()
 {
     return word_count;

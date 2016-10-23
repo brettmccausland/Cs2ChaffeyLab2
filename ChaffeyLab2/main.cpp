@@ -42,6 +42,7 @@ void Exercise_R9_11();//andre
 void Exercise_R9_12();//brett done
 //----------------------------------
 void Exercise_P9_1();// brett( in progress)
+void Processfile(string name,bool& run);
 void Exercise_P9_3();// brett(done)
 void Exercise_P9_6();// elizabeth
 void Exercise_P9_7();//andre
@@ -226,28 +227,34 @@ void Exercise_P9_1()
      //words, and lines in that file. Then have the program ask for the name of the next file.
      //When the user enters a file that doesn’t exist (such as the empty string), the program should exit.
     string name;
+    bool run=true;
+        while(run)
+        {
+            cout<<"Enter the filename"<<endl;
+             cin>>name;
+            Processfile(name,run);
+        }
+}
+void Processfile(string name,bool& run)
+{
     string quit;
     int lines,words,Characters;
+    Fprocess myfile(name);
+    myfile.ProcessWordsLines();
+    words=myfile.Get_WordCount();
+    lines=myfile.Get_LineCount();
 
-    bool run=true;
-
-        cout<<"Enter the filename"<<endl;
-        cin>>name;
-        Fprocess myfile(name);
-        myfile.ProcessWordsLines();
-        words=myfile.Get_WordCount();
-        lines=myfile.Get_LineCount();
-
-        myfile.ProcessCharacters();
-        Characters=myfile.Get_CharacterCount();
-        cout<<"lines: "<<lines<<endl;
-        cout<<"words: "<<words<<endl;
-        cout<<"Characters: "<<Characters<<endl;
-        cout<<"Enter yes to quit"<<endl;
-        cin>>name;
-        if(quit=="yes")
-            run=false;
+    myfile.ProcessCharacters();
+    Characters=myfile.Get_CharacterCount();
+    cout<<"lines: "<<lines<<endl;
+    cout<<"words: "<<words<<endl;
+    cout<<"Characters: "<<Characters<<endl;
+    cout<<"Enter yes to quit or just press return to continue"<<endl;
+    cin>>quit;
+    if(quit=="yes")
+        run=false;
 }
+
 void InitializeVector(vector<int>& Fillwithzeros,int size)
 {
     for(int i = 0 ;i<size;i++)
