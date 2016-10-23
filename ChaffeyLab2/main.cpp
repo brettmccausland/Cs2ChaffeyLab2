@@ -3,13 +3,14 @@
 #include <sstream>
 #include<vector>
 #include"fprocess.h"
+#include"courses.h"
 //#include <iomnip>
 
 /*
     Brett mccausland
     Lab 2 Streams
     Last Updated by: Brett mccausland
-    Last updated : 10-02-16
+    Last updated : 10-23-16
 
 */
 using namespace std;
@@ -27,35 +28,34 @@ void loadFromUserDeclaredFile(vector<Item_type>& data);
 
 void Print (const vector<string>& data);
 void InitializeVector(vector<int>& Fillwithzeros,int size);
-
-void Exercise_R9_1();// brett done
-void Exercise_R9_2();// brett done
+void Processfile(string name,bool& run);
+void Exercise_R9_1();// brett (done)
+void Exercise_R9_2();// brett (done)
 void Exercise_R9_3();// elizabeth
 void Exercise_R9_4();//andre
 void Exercise_R9_5();// rex
-void Exercise_R9_6();//brett
+void Exercise_R9_6();//brett (done)
 void Exercise_R9_7();//elizabeth
 void Exercise_R9_8();//andre
 void Exercise_R9_9();// rex
-void Exercise_R9_10();//brett
+void Exercise_R9_10();//brett(done)
 void Exercise_R9_11();//andre
-void Exercise_R9_12();//brett done
+void Exercise_R9_12();//brett (done)
 //----------------------------------
 void Exercise_P9_1();// brett( done)
-void Processfile(string name,bool& run);
 void Exercise_P9_3();// brett(done)
 void Exercise_P9_6();// elizabeth
 void Exercise_P9_7();//andre
 void Exercise_P9_8(); // rex
-void Exercise_P9_13();// brett
+void Exercise_P9_13();// brett(done)
 
 
 int main()
 {
     system("clear");
     cout<< "lab 2 "<<endl;
-    //Exercise_R9_1(); // Brett (done)
-    //Exercise_R9_2(); //Brett (done)
+    //Exercise_R9_1();
+    //Exercise_R9_2();
     //Exercise_R9_3();
     //Exercise_R9_4();
     //Exercise_R9_5();
@@ -67,7 +67,7 @@ int main()
     //Exercise_R9_11();
     //Exercise_R9_12();
     //----------------------------------
-    Exercise_P9_1();
+   // Exercise_P9_1();
      //Exercise_P9_3();
      //Exercise_P9_6();
     //Exercise_P9_7();
@@ -186,6 +186,7 @@ void Exercise_R9_5()
 void Exercise_R9_6()
 {
     //How do you open a file whose name contains a backslash, like temp\output.dat or c:\temp\output.dat?
+    //Anwser: Everywhere there is a backslash you must add a backslash
 }
 
 void Exercise_R9_7()
@@ -208,6 +209,8 @@ void Exercise_R9_9()
 void Exercise_R9_10()
 {
     //If a program woozle is started with the command woozle -DNAME=Piglet -I\eeyore -v heff.cpp a.cpp lump.cpp
+    //Anwser:arg[i] == the string in the command for example argv[0]= woozle
+    //Therefore there are 6 comandline arguments
 }
 
 void Exercise_R9_11()
@@ -292,7 +295,9 @@ void Exercise_P9_13()
    //classes.txt
    //1 CSC1
    //2 CSC2
-   //3 CSC46 4 CSC151 5 MTH121 6 ...
+   //3 CSC46
+    //4 CSC151
+    //5 MTH121 6 ...
    //For each class, there is a file with student numbers and grades:
     //csc2.txt
     //1 11234 A-
@@ -307,4 +312,7 @@ void Exercise_P9_13()
    //MTH121 C+
    //CHN1 A
    //PHY50 A-
+
+    Courses Chaffey;
+    Chaffey.PrintStudentReport(121667);
 }
