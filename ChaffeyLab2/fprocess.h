@@ -17,6 +17,7 @@ public:
     void printFrequency();
     int Get_WordCount();
     int Get_LineCount();
+     int Get_CharacterCount();
     ~Fprocess();
 private:
     bool more();
@@ -31,6 +32,7 @@ private:
     string Myfname;
     long int word_count;
     long int line_count;
+    long int Characters;
 
 };
 

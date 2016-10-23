@@ -55,7 +55,7 @@ int main()
     cout<< "lab 2 "<<endl;
     //Exercise_R9_1(); // Brett (done)
     //Exercise_R9_2(); //Brett (done)
-    Exercise_R9_3();
+    //Exercise_R9_3();
     //Exercise_R9_4();
     //Exercise_R9_5();
     //Exercise_R9_6();
@@ -227,29 +227,26 @@ void Exercise_P9_1()
      //When the user enters a file that doesn’t exist (such as the empty string), the program should exit.
     string name;
     string quit;
-    int lines,words;
+    int lines,words,Characters;
 
     bool run=true;
-    while(run)
-    {
+
         cout<<"Enter the filename"<<endl;
         cin>>name;
         Fprocess myfile(name);
         myfile.ProcessWordsLines();
-        lines=myfile.Get_WordCount();
-        words=myfile.Get_LineCount();
+        words=myfile.Get_WordCount();
+        lines=myfile.Get_LineCount();
+
         myfile.ProcessCharacters();
+        Characters=myfile.Get_CharacterCount();
         cout<<"lines: "<<lines<<endl;
         cout<<"words: "<<words<<endl;
+        cout<<"Characters: "<<Characters<<endl;
         cout<<"Enter yes to quit"<<endl;
         cin>>name;
         if(quit=="yes")
             run=false;
-
-    }
-
-
-
 }
 void InitializeVector(vector<int>& Fillwithzeros,int size)
 {

@@ -9,6 +9,7 @@ Fprocess::Fprocess(string fname)
         Myfname=fname;
         word_count=0;
         line_count=0;
+        Characters=0;
 }
 void Fprocess::ProcessWordsLines()
 {
@@ -17,20 +18,27 @@ void Fprocess::ProcessWordsLines()
     string input;
     string word;
     instream.open(Myfname.c_str());
-    while(getline(instream, input))
-      {
-        cout<<"while(getline(instream, input))"<<endl;
-        //getline(instream, input);
-        stringstream ss(input);
-         ++line_count;
-         while(ss>>word)
-         {
-             cout<<"while(ss>>word)"<<endl;
-            ++ word_count;
-         }
-         if(instream.eof())
-             _more=false;
-        }
+    if(instream.fail())
+    {
+        cout<<"file doesnt exist"<<endl;
+    }
+    else
+    {
+        while(getline(instream, input))
+        {
+
+           // cout<<"input: "<<input<<endl;
+            stringstream ss(input);
+
+            while(ss>>word)
+             {
+                   cout<<"Word: "<<word<<endl;
+                   word_count++;
+              }
+            ++line_count;
+          }
+    }
+    instream.close();
 }
 void Fprocess::FillBlock()
 {
@@ -39,6 +47,7 @@ void Fprocess::FillBlock()
     int size=0;
     while(instream>>temp && size<Maxsize)
       {
+        Characters++;
         //cout<<temp<<endl;
           Block.push_back(temp);
            ++size;
@@ -92,7 +101,10 @@ int Fprocess::Get_LineCount()
 {
     return line_count;
 }
-
+int Fprocess::Get_CharacterCount()
+{
+    return Characters;
+}
 void Fprocess:: printFrequency()
  {
         int n=ChOccurance.size();
