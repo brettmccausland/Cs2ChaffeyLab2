@@ -29,25 +29,27 @@ void loadFromUserDeclaredFile(vector<Item_type>& data);
 void Print (const vector<string>& data);
 void InitializeVector(vector<int>& Fillwithzeros,int size);
 void Processfile(string name,bool& run);
+
 void Exercise_R9_1();// brett (done)
 void Exercise_R9_2();// brett (done)
+void Exercise_R9_6();//brett (done)
+void Exercise_R9_10();//brett(done)
+void Exercise_R9_12();//brett (done)
+void Exercise_P9_1();// brett( done)
+void Exercise_P9_3();// brett(done)
+void Exercise_P9_13();// brett(done)
+//----------------------------------
 void Exercise_R9_3();// elizabeth
 void Exercise_R9_4();//andre
 void Exercise_R9_5();// rex
-void Exercise_R9_6();//brett (done)
 void Exercise_R9_7();//elizabeth
 void Exercise_R9_8();//andre
 void Exercise_R9_9();// rex
-void Exercise_R9_10();//brett(done)
 void Exercise_R9_11();//andre
-void Exercise_R9_12();//brett (done)
-//----------------------------------
-void Exercise_P9_1();// brett( done)
-void Exercise_P9_3();// brett(done)
 void Exercise_P9_6();// elizabeth
 void Exercise_P9_7();//andre
 void Exercise_P9_8(); // rex
-void Exercise_P9_13();// brett(done)
+
 
 
 int main()
