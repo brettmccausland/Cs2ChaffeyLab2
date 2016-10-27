@@ -3,10 +3,7 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
-    fprocess.cpp \
-    courses.cpp \
-    node.cpp
+SOURCES += main.cpp
 
 include(deployment.pri)
 qtcAddDeployment()

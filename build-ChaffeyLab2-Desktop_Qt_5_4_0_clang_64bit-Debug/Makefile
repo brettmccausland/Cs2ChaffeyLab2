@@ -48,14 +48,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../ChaffeyLab2/main.cpp \
-		../ChaffeyLab2/fprocess.cpp \
-		../ChaffeyLab2/courses.cpp \
-		../ChaffeyLab2/node.cpp 
-OBJECTS       = main.o \
-		fprocess.o \
-		courses.o \
-		node.o
+SOURCES       = ../ChaffeyLab2/main.cpp 
+OBJECTS       = main.o
 DIST          = ../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.4/clang_64/mkspecs/qdevice.pri \
 		../../../Qt/5.4/clang_64/mkspecs/features/device_config.prf \
@@ -181,10 +175,7 @@ DIST          = ../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.4/clang_64/mkspecs/features/lex.prf \
 		../ChaffeyLab2/ChaffeyLab2.pro fprocess.h \
 		courses.h \
-		node.h ../ChaffeyLab2/main.cpp \
-		../ChaffeyLab2/fprocess.cpp \
-		../ChaffeyLab2/courses.cpp \
-		../ChaffeyLab2/node.cpp
+		node.h ../ChaffeyLab2/main.cpp
 QMAKE_TARGET  = ChaffeyLab2
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = ChaffeyLab2
@@ -519,17 +510,9 @@ compiler_clean:
 ####### Compile
 
 main.o: ../ChaffeyLab2/main.cpp ../ChaffeyLab2/fprocess.h \
-		../ChaffeyLab2/courses.h
+		../ChaffeyLab2/courses.h \
+		../ChaffeyLab2/node.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChaffeyLab2/main.cpp
-
-fprocess.o: ../ChaffeyLab2/fprocess.cpp ../ChaffeyLab2/fprocess.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fprocess.o ../ChaffeyLab2/fprocess.cpp
-
-courses.o: ../ChaffeyLab2/courses.cpp ../ChaffeyLab2/courses.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o courses.o ../ChaffeyLab2/courses.cpp
-
-node.o: ../ChaffeyLab2/node.cpp ../ChaffeyLab2/node.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o ../ChaffeyLab2/node.cpp
 
 ####### Install
 
