@@ -11,5 +11,6 @@ qtcAddDeployment()
 HEADERS += \
     fprocess.h \
     courses.h \
-    node.h
+    node.h \
+    ccc_empl.h
 

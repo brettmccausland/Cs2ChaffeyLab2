@@ -4,6 +4,10 @@
 #include<vector>
 #include"fprocess.h"
 #include"courses.h"
+#include "ccc_empl.h"
+
+const int NEWLINE_LENGTH = 2;
+const int RECORD_SIZE = 30 + 10 + NEWLINE_LENGTH;
 //#include <iomnip>
 
 /*
@@ -30,26 +34,29 @@ void Print (const vector<string>& data);
 void InitializeVector(vector<int>& Fillwithzeros,int size);
 void Processfile(string name,bool& run);
 
-void Exercise_R9_1();// brett (done)
-void Exercise_R9_2();// brett (done)
-void Exercise_R9_6();//brett (done)
-void Exercise_R9_10();//brett(done)
-void Exercise_R9_12();//brett (done)
-void Exercise_P9_1();// brett( done)
-void Exercise_P9_3();// brett(done)
-void Exercise_P9_13();// brett(done)
-//----------------------------------
-void Exercise_R9_3();// elizabeth
-void Exercise_R9_4();//andre
-void Exercise_R9_5();// rex
-void Exercise_R9_7();//elizabeth
-void Exercise_R9_8();//andre
-void Exercise_R9_9();// rex
-void Exercise_R9_11();//andre
+void raise_salary(Employee& e, double percent);
+void read_employee(Employee& e, istream& in);
 
-void Exercise_P9_6();// elizabeth
-void Exercise_P9_7();//andre
-void Exercise_P9_8(); // rex
+
+void Exercise_R9_1();// (done)
+void Exercise_R9_2();// (done)
+void Exercise_R9_6();//(done)
+void Exercise_R9_10();//(done)
+void Exercise_R9_12();//(done)
+void Exercise_P9_1();// ( done)
+void Exercise_P9_3();// (done)
+void Exercise_P9_13();// (done)
+void Exercise_R9_3();//(done)
+void Exercise_R9_4();//(done)
+void Exercise_R9_7();//(done)
+void Exercise_R9_5();//(doen)
+void Exercise_R9_8();//(done)
+void Exercise_R9_9();//(done)
+void Exercise_R9_11();//(done)
+
+void Exercise_P9_6();//
+void Exercise_P9_7();//
+void Exercise_P9_8(); //
 
 
 
@@ -173,17 +180,23 @@ void SaveToFile( string filename,const vector<string> Data, ofstream &myfile)
 void Exercise_R9_3()
 {
     //What happens if you write to a file that you only opened for reading? Try it out if you don’t know.
+    //Anwser: If the file is opened with ifstream it will give a compilation error if the insertion operator is facing the wrong way
 }
 
 void Exercise_R9_4()
 {
-    //What happens if you try to open a file for reading that doesn’t exist? What happens if you try to open a file for writing that doesn’t exist?
+    //What happens if you try to open a file for reading that doesn’t exist?
+    //Anwser:An exception is thrown
+    //What happens if you try to open a file for writing that doesn’t exist?
+    //Anwser:A file will be created
 }
 
 void Exercise_R9_5()
 {
-   // What happens if you try to open a file for writing, but the file or device is write-protected (sometimes called read-only)?
+   // What happens if you try to open a file for writing, but the file or device is write-protected
+    //(sometimes called read-only)?
     //Try it out with a short test program.
+    //Anwser: a flag will be thrown and writing will not occur
 }
 
 void Exercise_R9_6()
@@ -195,19 +208,22 @@ void Exercise_R9_6()
 void Exercise_R9_7()
 {
     //Question: Why is the ifstream parameter of the read_data procedure in Section 9.2 a reference parameter and not a value parameter?
-    //Anwser:
+    //Anwser:Ifstream is a object and to avoid slicing objects are always past by reference
 
 }
 
 void Exercise_R9_8()
 {
-    //Exercise R9.8. How can youc onvert the string "3.14" into the floating-pointnumber 3.14? How can you convert the floating-point number 3.14 into the string "3.14"?
+    //Exercise R9.8. How can you convert the string "3.14" into the floating-pointnumber 3.14?
+    //Anwser: You can define a variable floating point and use a string stream to the stream to the variable
+    //How can you convert the floating-point number 3.14 into the string "3.14"?
+    //Anwser: ss<<number ss bieing the stringstream number being 3.14
 }
 
 void Exercise_R9_9()
 {
-    //What is a command line?
-    //How can a program read its command line?
+    // What is a command line?
+    // Anwser: comand line is a user interface to the operating system
 }
 void Exercise_R9_10()
 {
@@ -218,7 +234,8 @@ void Exercise_R9_10()
 
 void Exercise_R9_11()
 {
-    //How can you break the Caesar cipher? That is, how can you read a letter that was encrypted with the Caesar cipher, even though you don’t know the key?
+    //How can you break the Caesar cipher?
+    //Anwser: If you have a large enough sample you can likely decypt by using character occurances
 }
 
 void Exercise_R9_12()// brett done
@@ -280,6 +297,13 @@ void Exercise_P9_3()//done Brett
 }
 void Exercise_P9_6()
 {
+   // Junk mail. Write a program that reads in two files:
+   // a template and a database. The template file contains text and tags. The tags have the form |1| |2| |3|...
+   // and need to be replaced with the first, second, third, ... field in the current database record.
+   // A typical database looks like this:
+    //  Mr.|Harry|Hacker|1105 Torre Ave.|Cupertino|CA|95014
+    //  Dr.|John|Lee|702 Ninth Street Apt. 4|San Jose|CA|95109
+    //  Miss|Evelyn|Garcia|1101 S. University Place|Ann Arbor|MI|48105
 
 }
 void Exercise_P9_7()
@@ -289,6 +313,39 @@ void Exercise_P9_7()
 }
 void Exercise_P9_8()
 {
+   // The program in Section 9.6 asks the user to specify the record number. More likely than not,
+   // a user has no way of knowing the record number. Write a program that asks the user for the
+   // name of an employee, finds the record with that name, and displays the record.
+   // Then the program should give the following options to the user:
+   // • Change the salary of this record
+   // • View the next record
+   // • Find another employee • Quit
+
+       cout << "Please enter the data file name: ";
+       string filename;
+       cin >> filename;
+       fstream fs;
+       fs.open(filename.c_str());
+       fs.seekg(0, ios::end); // Go to end of file
+       int nrecord = fs.tellg() / RECORD_SIZE;
+
+       cout << "Please enter the record to update: (0 - "
+          << nrecord - 1 << ") ";
+       int pos;
+       cin >> pos;
+
+       const double SALARY_CHANGE = 5.0;
+
+       Employee e;
+       fs.seekg(pos * RECORD_SIZE, ios::beg);
+       read_employee(e, fs);
+       raise_salary(e, SALARY_CHANGE);
+       cout << "New salary: " << e.get_salary();
+       fs.seekp(pos * RECORD_SIZE, ios::beg);
+       //write_employee(e, fs);
+
+       fs.close();
+
 
 }
 void Exercise_P9_13()
@@ -319,3 +376,52 @@ void Exercise_P9_13()
     Courses Chaffey;
     Chaffey.PrintStudentReport(121667);
 }
+/**
+   Converts a string to a floating-point value, e.g.
+   "3.14" -> 3.14.
+   @param s a string representing a floating-point value
+   @return the equivalent floating-point value
+*/
+double string_to_double(string s)
+{
+   istringstream instr(s);
+   double x;
+   instr >> x;
+   return x;
+}
+
+/**
+   Raises an employee salary.
+   @param e employee receiving raise
+   @param percent the percentage of the raise
+*/
+void raise_salary(Employee& e, double percent)
+{
+   double new_salary = e.get_salary() * (1 + percent / 100);
+   e.set_salary(new_salary);
+}
+
+/**
+   Reads an employee record from a file.
+   @param e filled with the employee
+   @param in the stream to read from
+*/
+void read_employee(Employee& e, istream& in)
+{
+   string line;
+   getline(in, line);
+   if (in.fail()) return;
+   string name = line.substr(0, 30);
+   double salary = string_to_double(line.substr(30, 10));
+   e = Employee(name, salary);
+}
+
+/**
+   Writes an employee record to a stream.
+   @param e the employee record to write
+   @param out the stream to write to
+*/
+
+
+
+

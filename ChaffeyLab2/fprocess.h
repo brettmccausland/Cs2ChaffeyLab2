@@ -13,6 +13,7 @@ public:
 
     Fprocess(string fname);
     void ProcessCharacters();
+    void Filltemplate(string DataBase,string Template );
     void ProcessWordsLines();
     void printFrequency();
     int Get_WordCount();
@@ -48,15 +49,13 @@ Fprocess::Fprocess(string fname)
 }
 void Fprocess::ProcessWordsLines()
 {
-   // cout<<"FillBlock()"<<endl;
+
     stringstream temp;
     string input;
     string word;
     instream.open(Myfname.c_str());
     if(instream.fail())
-    {
         cout<<"file doesnt exist"<<endl;
-    }
     else
     {
         while(getline(instream, input))
@@ -75,6 +74,32 @@ void Fprocess::ProcessWordsLines()
     }
     instream.close();
 }
+void Fprocess::Filltemplate(string DataBase,string Template )
+{
+//    stringstream temp;
+//    string input;
+//    string word;
+//    string suffix,Firstname,lastname,Adress,Stsuffix,City,State,Zip;
+//    ifstream Templatestream;
+//    ostream newfile;
+//    ifstream ;
+//    instream.open(DataBase.c_str());
+//    Templatestream.open(Template.c_str());
+
+//    if(instream.fail())
+//        cout<<"file doesnt exist"<<endl;
+//    else
+//    {
+//        while(getline(instream, input))// from database
+//        {
+//            stringstream ss(input);
+//            ss>>suffix>>Firstname>>lastname>>Adress>>Stsuffix>>City>>State>>Zip;
+//            newfile.open(lastname.c_str());
+
+//          }
+//    }
+//    instream.close();
+}
 void Fprocess::FillBlock()
 {
    // cout<<"FillBlock()"<<endl;
@@ -92,7 +117,6 @@ void Fprocess::FillBlock()
 }
 void Fprocess::ProcessCharacters()
 {
-    //cout<<"Process()"<<endl;
      instream.open(Myfname.c_str());
     int ASCII,n;
     if(instream.fail())
