@@ -176,7 +176,8 @@ DIST          = ../../../Qt/5.4/clang_64/mkspecs/features/spec_pre.prf \
 		../ChaffeyLab2/ChaffeyLab2.pro fprocess.h \
 		courses.h \
 		node.h \
-		ccc_empl.h ../ChaffeyLab2/main.cpp
+		ccc_empl.h \
+		staff.h ../ChaffeyLab2/main.cpp
 QMAKE_TARGET  = ChaffeyLab2
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = ChaffeyLab2
@@ -513,7 +514,8 @@ compiler_clean:
 main.o: ../ChaffeyLab2/main.cpp ../ChaffeyLab2/fprocess.h \
 		../ChaffeyLab2/courses.h \
 		../ChaffeyLab2/node.h \
-		../ChaffeyLab2/ccc_empl.h
+		../ChaffeyLab2/ccc_empl.h \
+		../ChaffeyLab2/staff.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChaffeyLab2/main.cpp
 
 ####### Install

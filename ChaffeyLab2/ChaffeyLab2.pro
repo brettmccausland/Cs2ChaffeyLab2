@@ -12,5 +12,6 @@ HEADERS += \
     fprocess.h \
     courses.h \
     node.h \
-    ccc_empl.h
+    ccc_empl.h \
+    staff.h
 

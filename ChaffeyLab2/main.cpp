@@ -5,6 +5,7 @@
 #include"fprocess.h"
 #include"courses.h"
 #include "ccc_empl.h"
+#include"staff.h"
 
 const int NEWLINE_LENGTH = 2;
 const int RECORD_SIZE = 30 + 10 + NEWLINE_LENGTH;
@@ -54,7 +55,7 @@ void Exercise_R9_8();//(done)
 void Exercise_R9_9();//(done)
 void Exercise_R9_11();//(done)
 
-void Exercise_P9_6();//
+void Exercise_P9_6();//(in progress)
 void Exercise_P9_7();//
 void Exercise_P9_8(); //
 
@@ -80,7 +81,7 @@ int main()
    // Exercise_P9_1();
      //Exercise_P9_3();
      //Exercise_P9_6();
-    //Exercise_P9_7();
+    Exercise_P9_7();
     //Exercise_P9_8();
     //Exercise_P9_13();
     return 0;
@@ -308,8 +309,23 @@ void Exercise_P9_6()
 }
 void Exercise_P9_7()
 {
-    //The program in Section 9.6 only locates one record and updates the salary.
     //Write a program that raises or lowers the salaries of all employees by a given percentage.
+
+    double salaryone=7300.00;
+    double salary2=4300.00;
+    double percent=2.0;
+
+    vector<Employee> team;
+    Employee a("Alondra",salaryone);
+    Employee b("Alek",salary2);
+    team.push_back(a);
+    team.push_back(b);
+    Staff google(team);
+    google.SaveStaff();
+    google.RasieEveryoneSalary(percent);
+    google.LowerEveryoneSalary(10.00);
+
+
 }
 void Exercise_P9_8()
 {
@@ -395,11 +411,6 @@ double string_to_double(string s)
    @param e employee receiving raise
    @param percent the percentage of the raise
 */
-void raise_salary(Employee& e, double percent)
-{
-   double new_salary = e.get_salary() * (1 + percent / 100);
-   e.set_salary(new_salary);
-}
 
 /**
    Reads an employee record from a file.

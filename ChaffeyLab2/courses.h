@@ -12,8 +12,7 @@ class Courses
 public:
     Courses();
     void PrintStudentReport(int IdNumber);
-
-    ~Courses();
+   ~Courses();
 private:
      void Getnextfname();
      void GetStudentReport(int IdNumber);
