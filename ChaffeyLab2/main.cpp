@@ -37,7 +37,7 @@ void Processfile(string name,bool& run);
 
 void raise_salary(Employee& e, double percent);
 void read_employee(Employee& e, istream& in);
-
+void Filltemplate(string DataBase,string Template );
 
 void Exercise_R9_1();// (done)
 void Exercise_R9_2();// (done)
@@ -54,10 +54,11 @@ void Exercise_R9_5();//(doen)
 void Exercise_R9_8();//(done)
 void Exercise_R9_9();//(done)
 void Exercise_R9_11();//(done)
+void Exercise_P9_7();//(done)
+void Exercise_P9_8(); //(done)
 
 void Exercise_P9_6();//(in progress)
-void Exercise_P9_7();//
-void Exercise_P9_8(); //
+
 
 
 
@@ -80,8 +81,8 @@ int main()
     //----------------------------------
    // Exercise_P9_1();
      //Exercise_P9_3();
-     //Exercise_P9_6();
-    Exercise_P9_7();
+     Exercise_P9_6();
+   // Exercise_P9_7();
     //Exercise_P9_8();
     //Exercise_P9_13();
     return 0;
@@ -305,6 +306,63 @@ void Exercise_P9_6()
     //  Mr.|Harry|Hacker|1105 Torre Ave.|Cupertino|CA|95014
     //  Dr.|John|Lee|702 Ninth Street Apt. 4|San Jose|CA|95109
     //  Miss|Evelyn|Garcia|1101 S. University Place|Ann Arbor|MI|48105
+    string DataBase="Database.txt";
+    string Template="template.txt";
+    Filltemplate(DataBase,Template);
+}
+void Filltemplate(string DataBase,string Template )
+{
+    stringstream temp;
+    string input,input2,output;
+    string word,Street;
+    string suffix,Firstname,lastname,Adress,Stsuffix,City,State,Zip;
+    ifstream Templatestream,instream;
+    ofstream outstream;
+   // ifstream ;
+    instream.open(DataBase.c_str());
+    Templatestream.open(Template.c_str());
+
+    if(instream.fail())
+        cout<<"Database file doesnt exist"<<endl;
+    if(Templatestream.fail())
+        cout<<"file doesnt exist"<<endl;
+    else
+    {
+        while(getline(instream, input))// from database
+        {
+            stringstream ss(input);
+            ss>>suffix>>Firstname>>lastname>>Adress>>Street>>Stsuffix>>City>>State>>Zip;
+            outstream.open(lastname.c_str());
+            while(getline(Templatestream,input2))// lines in template
+            {
+                stringstream ss2(input2);
+                while(ss>>output)
+                 {
+                    if(output=="1")
+                        outstream<<suffix<<" ";
+                    else if(output=="2")
+                        outstream<<Firstname<<" ";
+                    else if(output=="3")
+                        outstream<<lastname<<" ";
+                    else if(output=="4")
+                     outstream<<Adress<<" ";
+                    else  if(output=="5")
+                     outstream<<Street<<" "<<Stsuffix<<" ";
+                     else if(output=="6")
+                        outstream<<City<<" ";
+                    else if(output=="7")
+                        outstream<<State<<" ";
+                    else
+                        outstream<<output<<" ";
+                }
+            }
+            outstream.close();
+
+          }
+        outstream.close();
+        instream.close();
+        Templatestream.close();
+    }
 
 }
 void Exercise_P9_7()
