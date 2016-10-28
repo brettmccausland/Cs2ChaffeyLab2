@@ -336,7 +336,7 @@ void Filltemplate(string DataBase,string Template )
             while(getline(Templatestream,input2))// lines in template
             {
                 stringstream ss2(input2);
-                while(ss>>output)
+                while(ss2>>output)
                  {
                     if(output=="1")
                         outstream<<suffix<<" ";
