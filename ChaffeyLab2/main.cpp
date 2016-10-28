@@ -352,10 +352,14 @@ void Filltemplate(string DataBase,string Template )
                         outstream<<City<<" ";
                     else if(output=="7")
                         outstream<<State<<" ";
+                    else if(output=="E")
+                        outstream<<endl;
                     else
                         outstream<<output<<" ";
                 }
             }
+            Templatestream.clear();
+            Templatestream.seekg(0);
             outstream.close();
 
           }
