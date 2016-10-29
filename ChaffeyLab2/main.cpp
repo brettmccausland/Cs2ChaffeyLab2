@@ -56,8 +56,7 @@ void Exercise_R9_9();//(done)
 void Exercise_R9_11();//(done)
 void Exercise_P9_7();//(done)
 void Exercise_P9_8(); //(done)
-
-void Exercise_P9_6();//(in progress)
+void Exercise_P9_6();//(done)
 
 
 
@@ -81,7 +80,7 @@ int main()
     //----------------------------------
    // Exercise_P9_1();
      //Exercise_P9_3();
-     Exercise_P9_6();
+  //   Exercise_P9_6();
    // Exercise_P9_7();
     //Exercise_P9_8();
     //Exercise_P9_13();
