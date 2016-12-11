@@ -496,14 +496,12 @@ bool getInput(string& command, Staff& crew, int pos, bool &quit)
         return false;
     else
     {
-         if(command!="NEXT")
-            get_employee(pos,crew);
-
-         crew.print_employee(pos);
-         cout<<endl;
-         //display the menu
-         menu();
-         cin>>command;
+        if(command != "NEXT")
+           get_employee(pos,crew);
+        crew.print_employee(pos);
+        cout<<endl;
+        menu();
+        cin>>command;
         // the the command
         standardize(command);
 
@@ -572,8 +570,11 @@ void process(string &first,Staff& edit,int pos,bool& quit)
     }
    else if(first=="NEXT")
     {
-       pos++;
-       //cout<<"Next";
+       cout<<"command next"<<endl;
+       if(edit.size()-1>pos)
+            pos++;
+       else
+           cout<<"no next employee";
     }
 }
 

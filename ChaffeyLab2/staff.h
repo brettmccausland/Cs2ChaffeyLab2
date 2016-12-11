@@ -19,6 +19,7 @@ public:
     void LowerEveryoneSalary(double percent);
     void SaveStaff();
     void print();
+    int size();
     void print_employee(int pos);
     void selection_sort();
     ~Staff();
@@ -37,6 +38,10 @@ Staff::Staff(vector<Employee>a)
       Fname="Staffdatabase.txt";
 
 }
+int Staff::size()
+{
+    return team.size();
+}
  int Staff::find(string name)
  {
      for(int i=0;i<team.size();i++)
@@ -52,6 +57,7 @@ void Staff::print_employee(int pos)
     Employee r =team[pos];
     cout<<r.get_name()<<", ";
     cout<<r.get_salary();
+
 
 }
 void Staff::insert_employee(Employee &a)
