@@ -39,6 +39,12 @@ void raise_salary(Employee& e, double percent);
 void read_employee(Employee& e, istream& in);
 void Filltemplate(string DataBase,string Template );
 
+bool getInput(string &command, Staff &crew, int pos);
+void sanitize(string &line);
+void standardize(string &line);
+void menu();
+void process(string &first, Staff &edit, int pos);
+
 void Exercise_R9_1();// (done)
 void Exercise_R9_2();// (done)
 void Exercise_R9_6();//(done)
@@ -55,7 +61,7 @@ void Exercise_R9_8();//(done)
 void Exercise_R9_9();//(done)
 void Exercise_R9_11();//(done)
 void Exercise_P9_7();//(done)
-void Exercise_P9_8(); //(done)
+void Exercise_P9_8(); //
 void Exercise_P9_6();//(done)
 
 
@@ -72,7 +78,7 @@ int main()
     //Exercise_R9_5();
     //Exercise_R9_6();
      //Exercise_R9_7();
-     //Exercise_R9_8();
+    // Exercise_R9_8();
      //Exercise_R9_9();￼￼
     //Exercise_R9_10();
     //Exercise_R9_11();
@@ -82,7 +88,7 @@ int main()
      //Exercise_P9_3();
   //   Exercise_P9_6();
    // Exercise_P9_7();
-    //Exercise_P9_8();
+    Exercise_P9_8();
     //Exercise_P9_13();
     return 0;
 }
@@ -388,43 +394,6 @@ void Exercise_P9_7()
 
 
 }
-void Exercise_P9_8()
-{
-   // The program in Section 9.6 asks the user to specify the record number. More likely than not,
-   // a user has no way of knowing the record number. Write a program that asks the user for the
-   // name of an employee, finds the record with that name, and displays the record.
-   // Then the program should give the following options to the user:
-   // • Change the salary of this record
-   // • View the next record
-   // • Find another employee • Quit
-
-       cout << "Please enter the data file name: ";
-       string filename;
-       cin >> filename;
-       fstream fs;
-       fs.open(filename.c_str());
-       fs.seekg(0, ios::end); // Go to end of file
-       int nrecord = fs.tellg() / RECORD_SIZE;
-
-       cout << "Please enter the record to update: (0 - "
-          << nrecord - 1 << ") ";
-       int pos;
-       cin >> pos;
-
-       const double SALARY_CHANGE = 5.0;
-
-       Employee e;
-       fs.seekg(pos * RECORD_SIZE, ios::beg);
-       read_employee(e, fs);
-       raise_salary(e, SALARY_CHANGE);
-       cout << "New salary: " << e.get_salary();
-       fs.seekp(pos * RECORD_SIZE, ios::beg);
-       //write_employee(e, fs);
-
-       fs.close();
-
-
-}
 void Exercise_P9_13()
 {
     //Write a program that prints out a student grade report.There is a file, classes.txt,
@@ -486,6 +455,114 @@ void read_employee(Employee& e, istream& in)
    string name = line.substr(0, 30);
    double salary = string_to_double(line.substr(30, 10));
    e = Employee(name, salary);
+}
+//--------------------------------------------------------------------
+void sanitize(string &line)
+{
+    //removes all non-numbers
+    size_t size;
+    while(line[0]<'0' || line[0] > '9')
+        line.erase(0,1);
+    while(line[size = line.size()-1]<'0' || line[size] > '9')
+        line.erase(size);
+}
+void menu()
+{
+
+    cout<<"please type one of the following options, Command: what the command is"<<endl;
+    cout<<"Salary: to make changes to the current employyes salary"<<endl;
+   cout<< "New: to go to a diffrent employyes record"<<endl;
+   cout<<"Next: access the next employye on record"<<endl;
+   cout<<"Quit: to exit the program"<<endl;
+}
+
+void standardize(string &line)
+{
+    //erase trailing spaces, leading spaces and uppercases everything
+    for(size_t i = 0; i <line.size();i++)
+        line[i] = toupper(line[i]);
+
+    while(line[0] == ' ')
+        line.erase(0,1);
+
+    while(line[line.size()-1] == ' ')
+        line.erase(line.size()-1);
+}
+bool getInput(string& command,Staff& crew,int pos)
+{
+    string line,first;
+    cout<<"Please enter the name of the employee"<<endl;
+    cin>>line;
+
+    first = line;
+    // display the account
+    pos=crew.find(first);
+    if(pos==-1)
+        cout<<"employye is not there"<<endl;
+    else
+    {
+        crew.print_employee(pos);
+         //display the menu
+        menu();
+        // the the command
+        getline(cin, command);
+        standardize(command);
+
+    }
+  return true;
+
+}
+void Exercise_P9_8()
+{
+   // The program in Section 9.6 asks the user to specify the record number. More likely than not,
+   // a user has no way of knowing the record number. Write a program that asks the user for the
+   // name of an employee, finds the record with that name, and displays the record.
+   // Then the program should give the following options to the user:
+
+    // asks the user for the
+    // name of an employee, finds the record with that name, and displays the record
+    // • Change the salary of this record
+   // • View the next record
+   // • Find another employee
+   // • Quit
+
+Staff blueguys;
+
+ string command;
+ int pos;
+  Employee r ("john", 10000);
+   Employee re ("jo", 10000);
+    Employee rs ("jon", 10000);
+     Employee rz("j", 10000);
+      Employee rr ("ohn", 10000);
+       blueguys.insert_employee(r);
+        blueguys.insert_employee(re);
+         blueguys.insert_employee(rs);
+          blueguys.insert_employee(rr);
+           blueguys.insert_employee(rz);
+      while(getInput(command,blueguys,pos))// getInput(string &first,string& command,Staff& crew,int pos)
+          process(command,blueguys,pos);
+
+
+}
+void process(string &first,Staff& edit,int pos)
+{
+    if(first=="QUIT")
+    {
+        cout<<"quit";
+    }
+   if(first=="NEW")
+    {
+        cout<<"new";
+    }
+    else if(first=="SALARY")
+    {
+        cout<<"salary";
+    }
+   else if(first=="NEXT")
+    {
+       cout<<"Next";
+    }
 }
 
 /**

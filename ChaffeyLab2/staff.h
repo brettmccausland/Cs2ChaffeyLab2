@@ -13,10 +13,13 @@ public:
     Staff();
     Staff(vector<Employee>a);
     void addEmployee(Employee &a);
+    void insert_employee(Employee &a);
+    int find(string name);
     void RasieEveryoneSalary(double percent);
     void LowerEveryoneSalary(double percent);
     void SaveStaff();
     void print();
+    void print_employee(int pos);
     void selection_sort();
     ~Staff();
 private:
@@ -34,6 +37,28 @@ Staff::Staff(vector<Employee>a)
       Fname="Staffdatabase.txt";
 
 }
+ int Staff::find(string name)
+ {
+     for(int i=0;i<team.size();i++)
+     {
+         Employee r = team[i];
+         if(name== r.get_name())
+             return i;
+     }
+     return -1;
+ }
+void Staff::print_employee(int pos)
+{
+    Employee r =team[pos];
+    cout<<r.get_name()<<", ";
+    cout<<r.get_salary();
+
+}
+void Staff::insert_employee(Employee &a)
+{
+    team.push_back(a);
+}
+
 void Staff::raise_salary(Employee& e, double percent)
 {
    double new_salary = e.get_salary() * (1 + percent / 100);
