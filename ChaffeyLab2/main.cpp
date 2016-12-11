@@ -39,11 +39,12 @@ void raise_salary(Employee& e, double percent);
 void read_employee(Employee& e, istream& in);
 void Filltemplate(string DataBase,string Template );
 
-bool getInput(string &command, Staff &crew, int pos);
+bool getInput(string &command, Staff &crew, int pos, bool& quit);
 void sanitize(string &line);
 void standardize(string &line);
 void menu();
-void process(string &first, Staff &edit, int pos);
+void process(string &first, Staff &edit, int pos, bool &quit);
+void get_employee(int& pos,Staff& crew);
 
 void Exercise_R9_1();// (done)
 void Exercise_R9_2();// (done)
@@ -488,30 +489,38 @@ void standardize(string &line)
     while(line[line.size()-1] == ' ')
         line.erase(line.size()-1);
 }
-bool getInput(string& command,Staff& crew,int pos)
+bool getInput(string& command, Staff& crew, int pos, bool &quit)
 {
-    string line,first;
-    cout<<"Please enter the name of the employee"<<endl;
-    cin>>line;
 
-    first = line;
-    // display the account
-    pos=crew.find(first);
-    if(pos==-1)
-        cout<<"employye is not there"<<endl;
+    if(quit)
+        return false;
     else
     {
-        crew.print_employee(pos);
+         if(command!="NEXT")
+            get_employee(pos,crew);
+
+         crew.print_employee(pos);
+         cout<<endl;
          //display the menu
-        menu();
+         menu();
+         cin>>command;
         // the the command
-        getline(cin, command);
         standardize(command);
 
-    }
-  return true;
+       }
+    return true;
+}
+void get_employee(int& pos,Staff& crew)
+{
+    string line;
+    cout<<"Please enter the name of the employee"<<endl;
+    cin>>line;
+    pos=crew.find(line);
+    if(pos==-1)
+        cout<<"employye is not there"<<endl;
 
 }
+
 void Exercise_P9_8()
 {
    // The program in Section 9.6 asks the user to specify the record number. More likely than not,
@@ -530,6 +539,7 @@ Staff blueguys;
 
  string command;
  int pos;
+ bool quit;
   Employee r ("john", 10000);
    Employee re ("jo", 10000);
     Employee rs ("jon", 10000);
@@ -540,16 +550,17 @@ Staff blueguys;
          blueguys.insert_employee(rs);
           blueguys.insert_employee(rr);
            blueguys.insert_employee(rz);
-      while(getInput(command,blueguys,pos))// getInput(string &first,string& command,Staff& crew,int pos)
-          process(command,blueguys,pos);
+      while(getInput(command,blueguys,pos,quit))// getInput(string &first,string& command,Staff& crew,int pos)
+          process(command,blueguys,pos,quit);
 
 
 }
-void process(string &first,Staff& edit,int pos)
+void process(string &first,Staff& edit,int pos,bool& quit)
 {
     if(first=="QUIT")
     {
         cout<<"quit";
+        quit=true;
     }
    if(first=="NEW")
     {
@@ -561,7 +572,8 @@ void process(string &first,Staff& edit,int pos)
     }
    else if(first=="NEXT")
     {
-       cout<<"Next";
+       pos++;
+       //cout<<"Next";
     }
 }
 
