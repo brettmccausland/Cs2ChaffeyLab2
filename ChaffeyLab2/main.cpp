@@ -39,11 +39,11 @@ void raise_salary(Employee& e, double percent);
 void read_employee(Employee& e, istream& in);
 void Filltemplate(string DataBase,string Template );
 
-bool getInput(string &command, Staff &crew, int pos, bool& quit);
+bool getInput(string &command, Staff &crew, int &pos, bool& quit);
 void sanitize(string &line);
 void standardize(string &line);
 void menu();
-void process(string &first, Staff &edit, int pos, bool &quit);
+void process(string &first, Staff &edit, int& pos, bool &quit);
 void get_employee(int& pos,Staff& crew);
 
 void Exercise_R9_1();// (done)
@@ -489,7 +489,7 @@ void standardize(string &line)
     while(line[line.size()-1] == ' ')
         line.erase(line.size()-1);
 }
-bool getInput(string& command, Staff& crew, int pos, bool &quit)
+bool getInput(string& command, Staff& crew, int& pos, bool &quit)
 {
 
     if(quit)
@@ -553,7 +553,7 @@ Staff blueguys;
 
 
 }
-void process(string &first,Staff& edit,int pos,bool& quit)
+void process(string &first, Staff& edit, int &pos, bool& quit)
 {
     if(first=="QUIT")
     {
@@ -566,7 +566,10 @@ void process(string &first,Staff& edit,int pos,bool& quit)
     }
     else if(first=="SALARY")
     {
-        cout<<"salary";
+       double pay;
+        cout<<"Enter new salary"<<endl;
+        cin>>pay;
+        edit.changesalary(pos,pay);
     }
    else if(first=="NEXT")
     {

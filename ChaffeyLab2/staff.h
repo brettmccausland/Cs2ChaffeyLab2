@@ -17,6 +17,7 @@ public:
     int find(string name);
     void RasieEveryoneSalary(double percent);
     void LowerEveryoneSalary(double percent);
+    void changesalary(int pos, double salary);
     void SaveStaff();
     void print();
     int size();
@@ -41,6 +42,12 @@ Staff::Staff(vector<Employee>a)
 int Staff::size()
 {
     return team.size();
+}
+void Staff::changesalary(int pos, double salary)
+{
+    Employee r =team[pos];
+    r.set_salary(salary);
+    team[pos]=r;
 }
  int Staff::find(string name)
  {
