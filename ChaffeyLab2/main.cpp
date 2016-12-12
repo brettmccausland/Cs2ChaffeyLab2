@@ -62,7 +62,7 @@ void Exercise_R9_8();//(done)
 void Exercise_R9_9();//(done)
 void Exercise_R9_11();//(done)
 void Exercise_P9_7();//(done)
-void Exercise_P9_8(); //
+void Exercise_P9_8(); //done
 void Exercise_P9_6();//(done)
 
 
@@ -521,17 +521,6 @@ void get_employee(int& pos,Staff& crew)
 
 void Exercise_P9_8()
 {
-   // The program in Section 9.6 asks the user to specify the record number. More likely than not,
-   // a user has no way of knowing the record number. Write a program that asks the user for the
-   // name of an employee, finds the record with that name, and displays the record.
-   // Then the program should give the following options to the user:
-
-    // asks the user for the
-    // name of an employee, finds the record with that name, and displays the record
-    // • Change the salary of this record
-   // • View the next record
-   // • Find another employee
-   // • Quit
 
 Staff blueguys;
 
@@ -548,9 +537,8 @@ Staff blueguys;
          blueguys.insert_employee(rs);
           blueguys.insert_employee(rr);
            blueguys.insert_employee(rz);
-      while(getInput(command,blueguys,pos,quit))// getInput(string &first,string& command,Staff& crew,int pos)
+      while(getInput(command,blueguys,pos,quit))
           process(command,blueguys,pos,quit);
-
 
 }
 void process(string &first, Staff& edit, int &pos, bool& quit)
