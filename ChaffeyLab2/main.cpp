@@ -562,7 +562,7 @@ void process(string &first, Staff& edit, int &pos, bool& quit)
     }
    if(first=="NEW")
     {
-        cout<<"new";
+        cout<<"new"<<endl;
     }
     else if(first=="SALARY")
     {
